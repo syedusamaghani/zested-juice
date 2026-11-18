@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZESTED. Cold-Pressed Juice</title>
+<meta name="description" content="Real cold-pressed juice with functional ingredients. Get zested. Stay zested.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor" aria-hidden="true"><span></span></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- Loader -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <span class="loader__label">Squeezing in</span>
+    <span class="loader__count"><b id="loaderCount">0</b>%</span>
+  </div>
+  <div class="loader__bar"><i id="loaderBar"></i></div>
+</div>
+
+<!-- Promo modal -->
+<div class="modal" id="promo" role="dialog" aria-modal="true" aria-labelledby="promoTitle" hidden>
+  <div class="modal__box">
+    <button class="modal__close" data-close aria-label="Close">×</button>
+    <p class="eyebrow">First order</p>
+    <h2 id="promoTitle">10% OFF.<br>NO PULP.</h2>
+    <p>Join the list and get 10% off your first box.</p>
+    <form class="mini-form" data-newsletter>
+      <input type="email" placeholder="you@email.com" required aria-label="Email">
+      <button class="btn btn--dark" type="submit">Get code</button>
+    </form>
+    <p class="form-msg" role="status"></p>
+  </div>
+</div>
+
+<!-- Cart drawer -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Cart" aria-hidden="true">
+  <header>
+    <h3>Cart (<span data-cart-count>0</span>)</h3>
+    <button class="icon-btn" data-close-cart aria-label="Close cart">×</button>
+  </header>
+  <div class="ship">
+    <p id="shipMsg">You're $50.00 away from free shipping</p>
+    <div class="ship__bar"><i id="shipBar"></i></div>
+  </div>
+  <ul class="lines" id="lines"></ul>
+  <footer>
+    <div class="subtotal"><span>Subtotal</span><b id="subtotal">$0.00</b></div>
+    <p class="fine">Shipping and taxes calculated at checkout.</p>
+    <button class="btn btn--orange btn--block" id="checkout">Checkout</button>
+  </footer>
+</aside>
+
+<!-- Nav -->
+<header class="nav" id="nav">
+  <a href="#top" class="logo" aria-label="Zested home">ZESTED<span>.</span></a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#shop">Shop</a>
+    <a href="#ingredients">Ingredients</a>
+    <a href="#teams">For Teams</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <button class="cart-btn" id="cartBtn" aria-label="Open cart">Cart (<span data-cart-count>0</span>)</button>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__blob" aria-hidden="true"></div>
+    <div class="hero__cans" aria-hidden="true">
+      <div class="hc hc--l" data-depth="40" data-flavor="green"></div>
+      <div class="hc hc--r" data-depth="-55" data-flavor="berry"></div>
+      <div class="hc hc--c" data-depth="25" data-flavor="orange"></div>
+    </div>
+    <h1 class="hero__title" data-split>
+      <span class="line"><span>GET ZESTED.</span></span>
+      <span class="line"><span class="outline">STAY ZESTED.</span></span>
+    </h1>
+    <p class="hero__sub" data-fade>Cold-pressed. Never from concentrate. Built with functional ingredients that actually do something.</p>
+    <div class="hero__cta" data-fade>
+      <a href="#shop" class="btn btn--orange" data-magnetic>Shop juice</a>
+      <a href="#ingredients" class="btn btn--ghost" data-magnetic>What's inside</a>
+    </div>
+
+    <div class="slider" id="slider">
+      <div class="slider__track" id="sliderTrack"></div>
+    </div>
+    <div class="slider__ctrl">
+      <button class="icon-btn" id="prev" aria-label="Previous">←</button>
+      <button class="icon-btn" id="next" aria-label="Next">→</button>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__row">
+      <span>Cold-pressed ✺ No added sugar ✺ Real fruit ✺ Zero concentrate ✺ Fresh in 24h ✺ Cold-pressed ✺ No added sugar ✺ Real fruit ✺ Zero concentrate ✺ Fresh in 24h ✺</span>
+      <span>Cold-pressed ✺ No added sugar ✺ Real fruit ✺ Zero concentrate ✺ Fresh in 24h ✺ Cold-pressed ✺ No added sugar ✺ Real fruit ✺ Zero concentrate ✺ Fresh in 24h ✺</span>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="section" id="shop">
+    <header class="section__head">
+      <p class="eyebrow">The lineup</p>
+      <h2 data-split><span class="line"><span>PICK YOUR POUR.</span></span></h2>
+    </header>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- CATEGORY -->
+  <section class="section category">
+    <div class="category__text">
+      <p class="eyebrow">Real Juice Drink</p>
+      <h2 data-split>
+        <span class="line"><span>PERFORMANCE</span></span>
+        <span class="line"><span>COLD-PRESS.</span></span>
+      </h2>
+      <p class="scrub" data-scrub>Every bottle is pressed from fruit picked at peak ripeness, bottled within hours and shipped cold. Nothing is heated, diluted or hidden. Just juice that tastes like the fruit it came from.</p>
+      <ul class="ticks">
+        <li data-fade>Pressed from single-farm fruit, never concentrate</li>
+        <li data-fade>Adaptogens for calm, steady energy</li>
+        <li data-fade>Vitamin C and electrolytes for daily recovery</li>
+        <li data-fade>Supports focus, immunity and brain function</li>
+      </ul>
+      <a href="#shop" class="btn btn--dark" data-fade data-magnetic>Build your box</a>
+    </div>
+    <div class="category__art" aria-hidden="true">
+      <div class="ring ring--1"></div><div class="ring ring--2"></div>
+      <div class="can-hero" data-flavor="orange" data-parallax="-40"></div>
+      <div class="can-hero can-hero--b" data-flavor="green" data-parallax="30"></div>
+    </div>
+  </section>
+
+  <!-- INGREDIENTS -->
+  <section class="ingredients" id="ingredients">
+    <div class="ingredients__bg" aria-hidden="true">
+      <span class="fruit" data-parallax="-80" style="--x:8%;--y:18%;--s:5rem">🍊</span>
+      <span class="fruit" data-parallax="60" style="--x:84%;--y:12%;--s:4rem">🍋</span>
+      <span class="fruit" data-parallax="-50" style="--x:90%;--y:62%;--s:6rem">🍓</span>
+      <span class="fruit" data-parallax="70" style="--x:4%;--y:70%;--s:4.5rem">🥬</span>
+      <span class="fruit" data-parallax="-30" style="--x:46%;--y:4%;--s:3.5rem">🍏</span>
+    </div>
+    <header class="section__head section__head--light">
+      <p class="eyebrow">Functional</p>
+      <h2 data-split>
+        <span class="line"><span>REAL INGREDIENTS.</span></span>
+        <span class="line"><span>REAL PERFORMANCE.</span></span>
+      </h2>
+    </header>
+    <div class="cards">
+      <article class="card-i" data-fade><span class="num">01</span><h3>Cold-press</h3><p>Pressed under 1,500 PSI to keep enzymes, color and flavor intact. No heat. No shortcuts.</p></article>
+      <article class="card-i" data-fade><span class="num">02</span><h3>Natural energy</h3><p>Green tea and citrus peel deliver a clean lift without the crash or the jitters.</p></article>
+      <article class="card-i" data-fade><span class="num">03</span><h3>Vitamin C</h3><p>Up to 200% of your daily value from real acerola, orange and lemon.</p></article>
+      <article class="card-i" data-fade><span class="num">04</span><h3>Adaptogens</h3><p>Ashwagandha and ginger root to steady your stress response through the day.</p></article>
+    </div>
+  </section>
+
+  <!-- TEAMS -->
+  <!-- POUR: scroll-scrubbed bottle pouring juice into a glass -->
+  <section class="pour" id="pour">
+    <div class="pour__inner">
+      <div class="pour__stage">
+        <svg id="pourSvg" viewBox="-10 -80 500 700" role="img" aria-label="Orange juice pouring from a bottle into a glass">
+          <defs>
+            <linearGradient id="juiceG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffa43a"/><stop offset="1" stop-color="#ff5a1f"/></linearGradient>
+            <linearGradient id="bodyG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff5a1f"/><stop offset=".5" stop-color="#ff9a2e"/><stop offset="1" stop-color="#ff5a1f"/></linearGradient>
+            <clipPath id="glassClip"><path d="M110 300 L135 545 Q137 560 152 560 L248 560 Q263 560 265 545 L290 300 Z"/></clipPath>
+          </defs>
+          <ellipse cx="200" cy="582" rx="120" ry="12" fill="rgba(0,0,0,.45)"/>
+          <g clip-path="url(#glassClip)">
+            <rect id="pourLiquid" x="100" y="560" width="200" height="320" fill="url(#juiceG)"/>
+            <g id="pourIce" opacity="0">
+              <rect x="140" y="12" width="46" height="46" rx="9" transform="rotate(-12 163 35)" fill="rgba(255,255,255,.2)" stroke="rgba(255,255,255,.45)"/>
+              <rect x="205" y="22" width="42" height="42" rx="9" transform="rotate(14 226 43)" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.4)"/>
+              <rect x="172" y="52" width="40" height="40" rx="9" transform="rotate(-4 192 72)" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.35)"/>
+            </g>
+          </g>
+          <path d="M110 300 L135 545 Q137 560 152 560 L248 560 Q263 560 265 545 L290 300" fill="rgba(255,255,255,.05)" stroke="rgba(255,250,240,.55)" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M124 330 L141 520" stroke="rgba(255,255,255,.3)" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path id="pourStream" fill="none" stroke="#ff8a28" stroke-width="9" stroke-linecap="round" pathLength="1"/>
+          <path id="pourStream2" fill="none" stroke="#ffd08a" stroke-width="2.5" stroke-linecap="round" pathLength="1" opacity=".7"/>
+          <ellipse id="pourRipple" cx="200" cy="560" rx="10" ry="3" fill="none" stroke="rgba(255,255,255,.65)" stroke-width="1.5" opacity="0"/>
+          <g id="pourBottleMove"><g id="pourBottle">
+            <clipPath id="bottleClip"><path d="M-16 -6 L16 -6 L16 50 C16 72 52 76 52 114 L52 250 Q52 270 32 270 L-32 270 Q-52 270 -52 250 L-52 114 C-52 76 -16 72 -16 50 Z"/></clipPath>
+            <path d="M-16 -6 L16 -6 L16 50 C16 72 52 76 52 114 L52 250 Q52 270 32 270 L-32 270 Q-52 270 -52 250 L-52 114 C-52 76 -16 72 -16 50 Z" fill="rgba(255,244,230,.14)"/>
+            <g clip-path="url(#bottleClip)"><g id="pourBottleLiquid"><rect x="-320" y="180" width="640" height="700" fill="url(#juiceG)"/></g></g>
+            <path d="M-16 -6 L16 -6 L16 50 C16 72 52 76 52 114 L52 250 Q52 270 32 270 L-32 270 Q-52 270 -52 250 L-52 114 C-52 76 -16 72 -16 50 Z" fill="none" stroke="rgba(255,250,240,.7)" stroke-width="3" stroke-linejoin="round"/>
+            <rect x="-22" y="-12" width="44" height="10" rx="5" fill="#e4e0d8"/>
+            <rect x="-52" y="146" width="104" height="82" fill="#fff6e8"/>
+            <text x="0" y="182" text-anchor="middle" font-family="'Bricolage Grotesque',Arial,sans-serif" font-weight="800" font-size="20" fill="#12100e" style="font-stretch:80%">ZESTED.</text>
+            <text x="0" y="209" text-anchor="middle" font-family="'Bricolage Grotesque',Arial,sans-serif" font-weight="800" font-size="18" fill="#ff5a1f" style="font-stretch:80%">ORANGE</text>
+            <rect x="-42" y="84" width="7" height="52" rx="3.5" fill="rgba(255,255,255,.45)"/>
+            <rect x="-42" y="236" width="7" height="22" rx="3.5" fill="rgba(255,255,255,.35)"/>
+          </g></g>
+        </svg>
+      </div>
+      <div class="pour__copy">
+        <p class="eyebrow">Fresh pour</p>
+        <h2>Poured straight from the fruit.</h2>
+        <ul class="pour__list">
+          <li><h3>Cold-pressed oranges</h3><p>Pressed within hours of picking and never made from concentrate.</p></li>
+          <li><h3>No added sugar</h3><p>All the sweetness comes from the fruit itself.</p></li>
+          <li><h3>Vitamin C</h3><p>Up to 200% of your daily value in every single bottle.</p></li>
+          <li><h3>Ginger and turmeric</h3><p>A gentle kick that keeps you steady through the day.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section teams" id="teams">
+    <div class="teams__box">
+      <p class="eyebrow">For teams</p>
+      <h2 data-split>
+        <span class="line"><span>YOUR OFFICE,</span></span>
+        <span class="line"><span>FULLY ZESTED.</span></span>
+      </h2>
+      <p data-fade>Monthly juice delivery for the whole team. Flexible plans, free fridge restock and a dedicated account manager.</p>
+      <a href="#subscribe" class="btn btn--orange" data-magnetic data-fade>Get a team quote</a>
+      <div class="teams__art" aria-hidden="true">
+        <div class="tb tb--1" data-flavor="green"></div>
+        <div class="tb tb--3" data-flavor="berry"></div>
+        <div class="tb tb--2" data-flavor="orange"></div>
+        <div class="tchip tchip--a"><b>48h</b><span>stays cold in transit</span></div>
+        <div class="tchip tchip--b"><b>0g</b><span>added sugar</span></div>
+        <div class="tchip tchip--c"><b>Free</b><span>fridge restock</span></div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div data-fade><b data-count="1600">0</b><span>teams onboard</span></div>
+      <div data-fade><b data-count="24">0</b><span>hours press to door</span></div>
+      <div data-fade><b data-count="0">0</b><span>added sugar (g)</span></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <header class="section__head">
+      <p class="eyebrow">Customer reviews</p>
+      <h2 data-split><span class="line"><span>PEOPLE LOVE IT.</span></span></h2>
+    </header>
+    <div class="quotes">
+      <figure class="quote" style="--a:#ff7a1a" data-fade>
+        <div class="quote__top">
+          <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.4 4.9 17.3 6 11.6 1.7 7.6l5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.4 4.9 17.3 6 11.6 1.7 7.6l5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.4 4.9 17.3 6 11.6 1.7 7.6l5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.4 4.9 17.3 6 11.6 1.7 7.6l5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.4 4.9 17.3 6 11.6 1.7 7.6l5.8-.7z"/></svg></span>
+          <span class="quote__tag">Orange Sunrise</span>
+        </div>
+        <svg class="quote__mark" viewBox="0 0 48 36" aria-hidden="true"><path d="M0 36V20C0 8 7 1.5 19 0v7.5C13 8.8 10.5 12 10.5 16.5H19V36zM27 36V20C27 8 34 1.5 46 0v7.5C40 8.8 37.500 12 37.500 16.500H46V36z"/></svg>
+        <blockquote>Swapped my 3pm coffee for the Orange Sunrise. Focus is up, shakes are gone.</blockquote>
+        <figcaption><i class="avatar" style="--a:#ff7a1a">M</i><div><b>Maya R.</b><span>Product Designer, Austin</span></div><em class="verified">Verified buyer</em></figcaption>
+      </figure>
+      <figure class="quote" style="--a:#2fa84f" data-fade>
+        <div class="quote__top">
+          <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.4 4.9 17.3 6 11.6 1.7 7.6l5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.4 4.9 17.3 6 11.6 1.7 7.6l5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.4 4.9 17.3 6 11.6 1.7 7.6l5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.4 4.9 17.3 6 11.6 1.7 7.6l5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.4 4.9 17.3 6 11.6 1.7 7.6l5.8-.7z"/></svg></span>
+          <span class="quote__tag">Green Machine</span>
+        </div>
+        <svg class="quote__mark" viewBox="0 0 48 36" aria-hidden="true"><path d="M0 36V20C0 8 7 1.5 19 0v7.5C13 8.8 10.5 12 10.5 16.5H19V36zM27 36V20C27 8 34 1.5 46 0v7.5C40 8.8 37.500 12 37.500 16.500H46V36z"/></svg>
+        <blockquote>Our whole office fridge is Zested now. Nobody asks for soda anymore.</blockquote>
+        <figcaption><i class="avatar" style="--a:#2fa84f">J</i><div><b>Jordan K.</b><span>Ops Lead, Denver</span></div><em class="verified">Verified buyer</em></figcaption>
+      </figure>
+      <figure class="quote" style="--a:#d6246e" data-fade>
+        <div class="quote__top">
+          <span class="stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.4 4.9 17.3 6 11.6 1.7 7.6l5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.4 4.9 17.3 6 11.6 1.7 7.6l5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.4 4.9 17.3 6 11.6 1.7 7.6l5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.4 4.9 17.3 6 11.6 1.7 7.6l5.8-.7z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.5 5.3 5.8.7-4.3 4 1.1 5.7L10 14.4 4.9 17.3 6 11.6 1.7 7.6l5.8-.7z"/></svg></span>
+          <span class="quote__tag">Beet Berry</span>
+        </div>
+        <svg class="quote__mark" viewBox="0 0 48 36" aria-hidden="true"><path d="M0 36V20C0 8 7 1.5 19 0v7.5C13 8.8 10.5 12 10.5 16.5H19V36zM27 36V20C27 8 34 1.5 46 0v7.5C40 8.8 37.500 12 37.500 16.500H46V36z"/></svg>
+        <blockquote>Beet Berry after training is unreal. Tastes like fruit, recovers like a pro.</blockquote>
+        <figcaption><i class="avatar" style="--a:#d6246e">S</i><div><b>Sam T.</b><span>Triathlete, Portland</span></div><em class="verified">Verified buyer</em></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq" id="faq">
+    <header class="section__head">
+      <p class="eyebrow">FAQ</p>
+      <h2 data-split><span class="line"><span>SOME ANSWERS.</span></span></h2>
+    </header>
+    <div class="faq__list">
+      <details data-fade><summary>What does cold-pressed mean?<i></i></summary><p>We crush fruit and vegetables and press them under high pressure. No heat means more nutrients, brighter taste and no concentrate.</p></details>
+      <details data-fade><summary>How long does it stay fresh?<i></i></summary><p>Up to 21 days refrigerated, sealed. Once opened, drink within 48 hours.</p></details>
+      <details data-fade><summary>Is there added sugar?<i></i></summary><p>None. All sweetness comes from the fruit itself.</p></details>
+      <details data-fade><summary>Can I pause or cancel a subscription?<i></i></summary><p>Anytime, in two clicks. Skip a month, swap flavors or cancel with no fees.</p></details>
+      <details data-fade><summary>Do you ship nationwide?<i></i></summary><p>Yes. Insulated, recyclable packaging keeps everything cold for 48 hours in transit.</p></details>
+    </div>
+  </section>
+
+  <!-- SUBSCRIBE -->
+  <section class="subscribe" id="subscribe">
+    <p class="eyebrow">Join the club</p>
+    <h2 data-split><span class="line"><span>SUBSCRIBE &amp; SAVE 15%.</span></span></h2>
+    <p class="subscribe__sub">Fresh juice at your door every month. Skip, swap or cancel anytime.</p>
+    <form class="big-form" data-newsletter>
+      <input type="email" placeholder="Enter your email" required aria-label="Email">
+      <button class="btn btn--dark" type="submit">Join now</button>
+    </form>
+    <p class="form-msg" role="status"></p>
+    <ul class="subscribe__perks">
+      <li>Free delivery</li><li>Cancel anytime</li><li>15% off every order</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__glow footer__glow--a" aria-hidden="true"></div>
+  <div class="footer__glow footer__glow--b" aria-hidden="true"></div>
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="footer__badge" aria-hidden="true">Z</div>
+        <p class="footer__tag">Cold-pressed juice, squeezed fresh and delivered to your door. No sugar added. No shortcuts.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram">Instagram</a><a href="#" aria-label="TikTok">TikTok</a><a href="#" aria-label="YouTube">YouTube</a>
+        </div>
+      </div>
+      <div class="footer__cols">
+        <div><h4>Shop</h4><a href="#shop">All juices</a><a href="#shop">Variety pack</a><a href="#teams">For teams</a><a href="#subscribe">Subscribe &amp; save</a></div>
+        <div><h4>Company</h4><a href="#ingredients">Ingredients</a><a href="#faq">FAQ</a><a href="#subscribe">Contact</a><a href="#teams">Reviews</a></div>
+        <div><h4>Visit</h4><span>hello@zested.com</span><span>Mon to Fri, 9am to 6pm</span><span>Brooklyn, New York</span></div>
+      </div>
+    </div>
+    <div class="footer__word" aria-hidden="true"><span>Z</span><span>E</span><span>S</span><span>T</span><span>E</span><span>D</span></div>
+    <div class="footer__bar">
+      <p class="footer__copy">© 2026 Zested. Squeezed with care.</p>
+      <a href="#top" class="footer__up" data-top>Back to top <i>↑</i></a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
